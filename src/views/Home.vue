@@ -1,18 +1,29 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>income and expenditure table</h1> 
+    <income-and-expense></income-and-expense>
+    <br>
+    <add-activity></add-activity>
   </div>
 </template>
 
 <script>
+import AddActivity from '../components/AddActivity.vue'
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import IncomeAndExpense from '../components/IncomeAndExpense.vue'
+
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    IncomeAndExpense,
+    AddActivity
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  h1 {
+    font-family: Helvetica, Arial,  sans-serif;
+  }
+</style>
