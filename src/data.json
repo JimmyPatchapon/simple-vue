@@ -1,0 +1,14 @@
+[
+    {
+    "activity": "Deposited",
+    "income": 50000,
+    "expense": 0,
+    "date": "2021-07-25"
+    },
+    {
+    "activity": "Withdrew",
+    "income": 0,
+    "expense": 20000,
+    "date": "2021-07-25"
+    }
+]

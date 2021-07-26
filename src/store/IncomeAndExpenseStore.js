@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import jsonData from '@/data.json'
 
 
 Vue.use(Vuex)
@@ -39,20 +40,7 @@ export default new Vuex.Store({
         async fetchInformation({ commit }){
             let res = 
             {
-                data: [
-                  {
-                    activity: "Deposited",
-                    income: 50000,
-                    expense: 0,
-                    date: "2021-07-25"
-                  },
-                  {
-                    activity: "Withdrew",
-                    income: 0,
-                    expense: 20000,
-                    date: "2021-07-25"
-                  }
-                ]
+                data: jsonData
             }
 
             commit("fetch", { res })

@@ -31,7 +31,7 @@
             </tbody>
         </table>
         <br><br>
-        {{ total }}
+        <p>Sum of Total Value: {{ total }}</p>
     </div>
 </template>
 
@@ -47,6 +47,7 @@ export default {
     },
     created(){
         this.fetchInformation()
+        this.$root.$refs.IncomeAndExpense = this
 
     },
     methods: {
@@ -69,14 +70,18 @@ export default {
         margin-left: auto;
         margin-right: auto;
         margin-top: auto;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid white;
     }
     th {
-        border: 1px solid black
+        border: 1px solid white
     }
     tr,td {
-        border-right: 1px solid black;
-        border-left: 1px solid #000;
+        border-right: 1px solid white;
+        border-left: 1px solid white;
     }
+    p {
+        font-family: Helvetica, Arial,  sans-serif;
+    }
+
 
 </style>

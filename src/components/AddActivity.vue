@@ -9,6 +9,7 @@
               <label for="type">Date</label>
               <input type="date" v-model="form.date">
               <button @click="addInfo">Add</button>
+              <button @click="closeForm()">Cancel</button>
           </div>
           <div v-if="incomeIndex === 0">
               <label for="name">Activity</label>
@@ -18,8 +19,9 @@
               <label for="type">Date</label>
               <input type="date" id="e" v-model="form.date">
               <button @click="addInfo()">Add</button>
+              <button @click="closeForm()">Cancel</button>
           </div>
-          <div>
+          <div v-if="incomeIndex === -1">
             <button @click="openIncome">Add Income</button>
             <button @click="openExpense">Add Expense</button>
           </div>
@@ -33,6 +35,7 @@ import IncomeAndExpenseStore from "@/store/IncomeAndExpenseStore"
 export default {
     data() {
         return {
+            information: [],
             form: {
                 activity: "",
                 income: "",
@@ -42,13 +45,20 @@ export default {
             incomeIndex: -1
         }
     },
+    created(){
+        this.fetchInformation()
+    },
     methods: {
+        async fetchInformation(){
+            await IncomeAndExpenseStore.dispatch('fetchInformation')
+            this.information = IncomeAndExpenseStore.getters.Informations
+        },
         addInfo() {
             let payload = {
                 activity: this.form.activity,
-                income: this.form.income,
-                expense: this.form.expense,
-                date: this.form.date,
+                income: parseInt(this.form.income),
+                expense: parseInt(this.form.expense),
+                date: (this.form.date),
             }
             if (this.incomeIndex == 0)
             {
@@ -61,6 +71,7 @@ export default {
             {
                 IncomeAndExpenseStore.dispatch('addInfo',payload)
                 this.closeForm()
+                this.$root.$refs.IncomeAndExpense.CalTotal()
             }
 
         },
@@ -97,6 +108,10 @@ export default {
     }
     .expense {
         color: red;
+    }
+    button
+    {
+        margin: 0px 10px;
     }
 
 </style>
